@@ -17,6 +17,13 @@
                     </x-nav-link>
                 </div>
 
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('leaderboard') }}" :active="request()->routeIs('leaderboard')">
+                        {{ __('Leaderboard') }}
+                    </x-nav-link>
+                </div>
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('hall-of-shame') }}" :active="request()->routeIs('hall-of-shame')">
                         {{ __('Hall Of Shame') }}

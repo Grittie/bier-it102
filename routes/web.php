@@ -21,6 +21,7 @@ Route::middleware([
     Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/leaderboard', [\App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboard');
     Route::get('/shame', function () {
         return view('hall-of-shame');
     })->name('hall-of-shame');
