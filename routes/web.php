@@ -19,6 +19,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/', function () { return view('dashboard'); })->name('dashboard');
+    Route::get('/todo', function () { return view('to-do'); })->name('to-do');
     Route::get('/leaderboard', [\App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboard');
     Route::get('/shame', function () { return view('hall-of-shame'); })->name('hall-of-shame');
 });

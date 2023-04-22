@@ -10,6 +10,8 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <x-dashboard />
             </div>
+            <br>
+            Created by Lars Grit, using Laravel. Special thanks to Lucas Hilgevoord for design assets :).
         </div>
     </div>
 </x-app-layout>

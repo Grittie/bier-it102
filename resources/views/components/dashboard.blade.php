@@ -28,7 +28,7 @@
             </h2>
         </div>
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Since 21/4/23 a total of {{ App\Models\Score::getTotalPitchers() }} pitchers have been drunk, resulting in €{{ App\Models\Score::getTotalPrice() }},- having been spent on beer! 🤑
+            Since 21/4/23 a total of {{ App\Models\Score::getTotalPitchers() }} pitchers have been drunk, resulting in {{ App\Models\Score::getTotalPrice() }} having been spent on pitchers! 🥴
         </p>
     </div>
 </div>

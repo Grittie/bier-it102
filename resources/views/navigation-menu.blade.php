@@ -30,6 +30,12 @@
                     </x-nav-link>
                 </div>
 
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('to-do') }}" :active="request()->routeIs('to-do')">
+                        {{ __('To Do') }}
+                    </x-nav-link>
+                </div>
+
                 @if (Auth::user()->administrator)
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link href="{{ route('score-registration') }}" :active="request()->routeIs('score-registration')">
