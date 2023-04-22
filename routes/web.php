@@ -18,17 +18,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
+    Route::get('/', function () { return view('dashboard'); })->name('dashboard');
     Route::get('/leaderboard', [\App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboard');
+    Route::get('/shame', function () { return view('hall-of-shame'); })->name('hall-of-shame');
+});
 
-
+Route::middleware('admin')->group(function () {
+    // Routes or controller actions that require administrator privileges
     Route::get('score-registration', [\App\Http\Controllers\ScoreController::class, 'index'])->name('score-registration');
     Route::post('store-score', [\App\Http\Controllers\ScoreController::class, 'store'])->name('score-store');
-
-    Route::get('/shame', function () {
-        return view('hall-of-shame');
-    })->name('hall-of-shame');
 });
+
