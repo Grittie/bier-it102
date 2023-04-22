@@ -23,9 +23,20 @@ class EventServiceProvider extends ServiceProvider
     /**
      * Register any events for your application.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        parent::boot();
+
+        Event::listen(Registered::class, function (Registered $event) {
+            $user = $event->user;
+
+            $score = new Score([
+                'pitchers' => 0,
+                'shame' => 0,
+            ]);
+
+            $user->scores()->save($score);
+        });
     }
 
     /**

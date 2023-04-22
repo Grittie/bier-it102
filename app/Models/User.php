@@ -31,6 +31,12 @@ class User extends Authenticatable
         'shame_score'
     ];
 
+    public function scores()
+    {
+        return $this->hasOne(Score::class);
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
