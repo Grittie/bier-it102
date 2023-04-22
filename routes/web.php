@@ -25,7 +25,8 @@ Route::middleware([
     Route::get('/leaderboard', [\App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboard');
 
 
-    Route::get('/pitch_registration', [\App\Http\Controllers\RegistrationController::class, 'index'])->name('pitch-reg');
+    Route::get('score-registration', [\App\Http\Controllers\ScoreController::class, 'index'])->name('score-registration');
+    Route::post('store-score', [\App\Http\Controllers\ScoreController::class, 'store'])->name('score-store');
 
     Route::get('/shame', function () {
         return view('hall-of-shame');

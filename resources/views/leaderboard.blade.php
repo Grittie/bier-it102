@@ -76,13 +76,13 @@
                                     <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->name}}  </span>
                                 </td>
                                 <td class="border-dashed border-t border-gray-200 lastName">
-                                    <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->pitchers}} </span>
+                                    <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->scores->pitchers}} </span>
                                 </td>
                                 <td class="border-dashed border-t border-gray-200 lastName">
-                                    <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->pitchers * 1.8}} L</span>
+                                    <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->scores->pitchers * 1.8}} L</span>
                                 </td>
                                 <td class="border-dashed border-t border-gray-200 lastName">
-                                    <span class="text-gray-700 px-6 py-3 flex items-center"> € {{$user->pitchers * 13}} </span>
+                                    <span class="text-gray-700 px-6 py-3 flex items-center"> € {{$user->scores->pitchers * 13}} </span>
                                 </td>
                             </tr>
                         @endforeach

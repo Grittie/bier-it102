@@ -32,7 +32,7 @@
 
                 @if (Auth::user()->administrator)
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link href="{{ route('pitch-reg') }}" :active="request()->routeIs('pitch-reg')">
+                        <x-nav-link href="{{ route('score-registration') }}" :active="request()->routeIs('score-registration')">
                             {{ __('Registration') }}
                         </x-nav-link>
                     </div>

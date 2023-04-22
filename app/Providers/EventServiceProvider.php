@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Score; // add this import statement
+use App\Models\User;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
