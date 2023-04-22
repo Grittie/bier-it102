@@ -4,7 +4,7 @@
             {{ __('To Do') }}
         </h2>
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Since this is version 0.1 of IT102 Bier there is enough features to add, change or maybe remove.
+            Version: 0.01
         </p>
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
             To request features or changes message Lars Grit on your favorite messaging application.
@@ -62,6 +62,10 @@
 
                     <li>
                         Automate to-do list
+                    </li>
+
+                    <li>
+                        Fix weird top bar size difference
                     </li>
                 </ul>
 
