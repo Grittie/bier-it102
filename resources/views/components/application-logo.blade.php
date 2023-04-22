@@ -1,1 +1,1 @@
-<img src="{{ asset('images/beer-text-2.svg') }}" alt="Logo" width="125" height="125">
+<img src="{{ asset('images/logo.png') }}" alt="Logo" width="125" height="125">
