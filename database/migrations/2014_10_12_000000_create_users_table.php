@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->integer('pitchers')->default(0);
             $table->integer('shame_score')->default(0);
+            $table->boolean('administrator')->default(0);
             $table->timestamps();
         });
     }

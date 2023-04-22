@@ -21,7 +21,15 @@ Route::middleware([
     Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
+
     Route::get('/leaderboard', [\App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboard');
+
+
+    Route::get('/pitch_registration', [\App\Http\Controllers\RegistrationController::class, 'index'])->name('pitch-reg');
+    Route::get('/create-post', [RegistrationController::class, 'create'])->name('create.post');
+    Route::post('/create-post', [RegistrationController::class, 'store'])->name('store.post');
+
+
     Route::get('/shame', function () {
         return view('hall-of-shame');
     })->name('hall-of-shame');
