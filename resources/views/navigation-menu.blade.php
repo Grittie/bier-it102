@@ -299,5 +299,5 @@
             </x-responsive-nav-link>
         </div>
     </div>
+    @endif
 </nav>
-@endif

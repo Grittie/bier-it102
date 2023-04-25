@@ -68,23 +68,25 @@
                         </thead>
                         <tbody>
                         @foreach ($users as $key => $user)
-                            <tr>
-                                <td class="border-dashed border-t border-gray-200 userId">
-                                    <span class="text-gray-700 px-6 py-3 flex items-center"> {{$key + 1}} </span>
-                                </td>
-                                <td class="border-dashed border-t border-gray-200 firstName">
-                                    <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->name}}  </span>
-                                </td>
-                                <td class="border-dashed border-t border-gray-200 lastName">
-                                    <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->scores->pitchers}} </span>
-                                </td>
-                                <td class="border-dashed border-t border-gray-200 lastName">
-                                    <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->scores->pitchers * 1.8}} L</span>
-                                </td>
-                                <td class="border-dashed border-t border-gray-200 lastName">
-                                    <span class="text-gray-700 px-6 py-3 flex items-center"> € {{$user->scores->pitchers * 13}} </span>
-                                </td>
-                            </tr>
+                            @if ($user->scores->pitchers >= 1)
+                                <tr>
+                                    <td class="border-dashed border-t border-gray-200 userId">
+                                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{$key + 1}} </span>
+                                    </td>
+                                    <td class="border-dashed border-t border-gray-200 firstName">
+                                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->name}}  </span>
+                                    </td>
+                                    <td class="border-dashed border-t border-gray-200 lastName">
+                                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->scores->pitchers}} </span>
+                                    </td>
+                                    <td class="border-dashed border-t border-gray-200 lastName">
+                                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{$user->scores->pitchers * 1.8}} L</span>
+                                    </td>
+                                    <td class="border-dashed border-t border-gray-200 lastName">
+                                        <span class="text-gray-700 px-6 py-3 flex items-center"> € {{$user->scores->pitchers * 13}} </span>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                         </tbody>
                     </table>

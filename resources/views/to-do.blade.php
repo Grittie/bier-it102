@@ -4,7 +4,7 @@
             {{ __('To Do') }}
         </h2>
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Version: 0.01
+            Version: 0.02
         </p>
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
             To request features or changes message Lars Grit on your favorite messaging application.
@@ -48,49 +48,50 @@
                     <li>
                         Add graphics to dashboard
                     </li>
-
                     <li>
                         Implement more items other than pitchers
                     </li>
-
                     <li>
                         Add footer
                     </li>
-
                     <li>
                         Fix some mobile issues
                     </li>
-
                     <li>
                         Automate to-do list
                     </li>
-
                     <li>
                         Fix weird top bar size difference
                     </li>
-
                     <li>
                         Agenda function for planning
                     </li>
-
                     <li>
                         about us page
                     </li>
-
                     <li>
                         Stupid quotes on hall of shame
                     </li>
-
                     <li>
                         Attendency for the 'meetings'
                     </li>
-
                     <li>
                         Icons for top 3
                     </li>
-
                     <li>
                         Message board
+                    </li>
+                    <li>
+                        Member list
+                    </li>
+                    <li>
+                        Beer filling graphics
+                    </li>
+                    <li>
+                        Analytics
+                    </li>
+                    <li>
+                        Food leaderboard
                     </li>
                 </ul>
 
