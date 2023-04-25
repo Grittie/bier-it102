@@ -7,7 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            WORK IN PROGRESS
+            Kamal heeft zn'n wachtwoord vergeten
+            loser.
         </div>
     </div>
 </x-app-layout>

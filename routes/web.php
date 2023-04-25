@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/guest_dashboard', function () { return view('guest-dashboard'); })->name('guest-dashboard');
+Route::get('/guest_leaderboard', [\App\Http\Controllers\LeaderboardController::class, 'index'])->name('guest-leaderboard');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

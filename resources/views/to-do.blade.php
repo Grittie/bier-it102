@@ -48,6 +48,7 @@
                     <li>
                         Add graphics to dashboard
                     </li>
+
                     <li>
                         Implement more items other than pitchers
                     </li>
@@ -66,6 +67,30 @@
 
                     <li>
                         Fix weird top bar size difference
+                    </li>
+
+                    <li>
+                        Agenda function for planning
+                    </li>
+
+                    <li>
+                        about us page
+                    </li>
+
+                    <li>
+                        Stupid quotes on hall of shame
+                    </li>
+
+                    <li>
+                        Attendency for the 'meetings'
+                    </li>
+
+                    <li>
+                        Icons for top 3
+                    </li>
+
+                    <li>
+                        Message board
                     </li>
                 </ul>
 
