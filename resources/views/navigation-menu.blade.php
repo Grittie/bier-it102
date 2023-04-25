@@ -170,6 +170,24 @@
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('leaderboard') }}" :active="request()->routeIs('leaderboard')">
+                {{ __('Leaderboard') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('hall-of-shame') }}" :active="request()->routeIs('hall-of-shame')">
+                {{ __('Hall of shame') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('to-do') }}" :active="request()->routeIs('to-do')">
+                {{ __('To-Do') }}
+            </x-responsive-nav-link>
+
+            @if (Auth::user()->administrator)
+                <x-responsive-nav-link href="{{ route('score-registration') }}" :active="request()->routeIs('score-registration')">
+                    {{ __('Registration') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
@@ -294,8 +312,16 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link href="{{ route('guest-dashboard') }}" :active="request()->routeIs('guest-dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('guest-leaderboard') }}" :active="request()->routeIs('guest-leaderboard')">
+                {{ __('Leaderboard') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                {{ __('Register now!') }}
             </x-responsive-nav-link>
         </div>
     </div>

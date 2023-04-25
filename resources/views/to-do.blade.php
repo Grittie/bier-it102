@@ -4,7 +4,7 @@
             {{ __('To Do') }}
         </h2>
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Version: 0.02
+            Version: 0.021b
         </p>
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
             To request features or changes message Lars Grit on your favorite messaging application.
@@ -36,9 +36,6 @@
                 </div>
                 <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">To-do items:</h2>
                 <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
-                    <li>
-                        IMPORTANT: FIX MOBILE NAVBAR
-                    </li>
                     <li>
                         Implement Hall of Shame
                     </li>
