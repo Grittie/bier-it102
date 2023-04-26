@@ -291,6 +291,12 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                        {{ __('Login!') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
                         {{ __('Register now!') }}
                     </x-nav-link>
@@ -318,6 +324,10 @@
 
             <x-responsive-nav-link href="{{ route('guest-leaderboard') }}" :active="request()->routeIs('guest-leaderboard')">
                 {{ __('Leaderboard') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('loginphp ')">
+                {{ __('Login!') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
