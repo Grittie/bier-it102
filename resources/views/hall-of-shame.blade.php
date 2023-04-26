@@ -7,7 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
+            <h1 style="font-size: 5em;">Kamal Kouidar</h1>
+            <p> (wachtwoord vergeten) </p>
         </div>
     </div>
 </x-app-layout>
