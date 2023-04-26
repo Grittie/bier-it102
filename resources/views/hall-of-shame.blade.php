@@ -7,10 +7,10 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h1> Nick Schokker</h1>
+            <h1 style="font-weight: bold;"> Nick Schokker</h1>
             <p> "ik moet wel oppassen want ik heb wel een paar knappe tussen me familie zitten" </p>
             <br>
-            <h1>Kamal Kouidar</h1>
+            <h1 style="font-weight: bold;">Kamal Kouidar</h1>
             <p> (wachtwoord vergeten) </p>
         </div>
     </div>
