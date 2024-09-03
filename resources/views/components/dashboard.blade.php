@@ -1,9 +1,9 @@
 <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
     <h1 class=" text-2xl font-medium text-gray-900">
-        Welcome to the IT102 Bier
+        Welcome to the Beertracker
     </h1>
     <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-        IT102 Bier is your one-stop shop for checking out who has been contributing to the great cause of beer.
+        Beertracker is your one-stop shop for checking out who has been contributing to the great cause of beer.
     </p>
 </div>
 
@@ -16,7 +16,7 @@
             </h2>
         </div>
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Since 21/4/23 a total of {{ App\Models\Score::getTotalPitchers() }} pitchers have been drunk, resulting in {{ App\Models\Score::getTotalLiter() }} liters of beer having been consumed! 🥴
+            Since 02/09/24 a total of {{ App\Models\Score::getTotalPitchers() }} pitchers have been drunk, resulting in {{ App\Models\Score::getTotalLiter() }} liters of beer having been consumed! 🥴
         </p>
     </div>
 
@@ -28,7 +28,7 @@
             </h2>
         </div>
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Since 21/4/23 a total of {{ App\Models\Score::getTotalPitchers() }} pitchers have been drunk, resulting in €{{ App\Models\Score::getTotalPrice() }},- having been spent on pitchers! 🥴
+            Since 02/09/24 a total of {{ App\Models\Score::getTotalPitchers() }} pitchers have been drunk, resulting in €{{ App\Models\Score::getTotalPrice() }},- having been spent on pitchers! 🥴
         </p>
     </div>
 </div>
