@@ -15,6 +15,10 @@ class Score extends Model
         'user_id',
     ];
 
+    // Define constants for magic numbers
+    private const LITER_CONVERSION_FACTOR = 1.8;
+    private const PRICE_PER_PITCHER = 14;
+
     public static function getTotalPitchers()
     {
         return static::sum('pitchers');
@@ -22,11 +26,11 @@ class Score extends Model
 
     public static function getTotalLiter()
     {
-        return static::sum('pitchers') * 1.8;
+        return static::sum('pitchers') * self::LITER_CONVERSION_FACTOR;
     }
 
     public static function getTotalPrice()
     {
-        return static::sum('pitchers') * 13;
+        return static::sum('pitchers') * self::PRICE_PER_PITCHER;
     }
 }
