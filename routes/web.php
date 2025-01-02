@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MemberListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,10 @@ Route::middleware([
 Route::middleware('admin')->group(function () {
     // Routes or controller actions that require administrator privileges
     Route::get('score-registration', [\App\Http\Controllers\ScoreController::class, 'index'])->name('score-registration');
+    Route::resource('memberlist',\App\Http\Controllers\MemberListController::class);
+    Route::get('/memberlist', [\App\Http\Controllers\MemberListController::class, 'index'])->name('memberlist');
+    Route::put('/memberlist/{id}', [MemberListController::class, 'update'])->name('memberlist.update');
+    Route::delete('/memberlist/{user}', [MemberListController::class, 'destroy'])->name('memberlist.destroy');
     Route::post('store-score', [\App\Http\Controllers\ScoreController::class, 'store'])->name('score-store');
 });
 

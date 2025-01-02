@@ -9,6 +9,7 @@ class Card extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'card_id';
     protected $fillable = [
         'user_id',
         'rfid_tag',

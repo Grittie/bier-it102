@@ -51,6 +51,14 @@
                         </x-nav-link>
                     </div>
                 @endif
+
+                @if (Auth::user()->administrator)
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link href="{{ route('memberlist') }}" :active="request()->routeIs('memberlist')">
+                            {{ __('Memberlist') }}
+                        </x-nav-link>
+                    </div>
+                @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
