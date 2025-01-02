@@ -20,6 +20,13 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('sessions') }}" :active="request()->routeIs('sessions')">
+                        {{ __('Sessions') }}
+                    </x-nav-link>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('leaderboard') }}" :active="request()->routeIs('leaderboard')">
                         {{ __('Leaderboard') }}
                     </x-nav-link>

@@ -19,18 +19,53 @@ class Score extends Model
     private const LITER_CONVERSION_FACTOR = 1.8;
     private const PRICE_PER_PITCHER = 14;
 
+    /**
+     * Get total pitchers for all users.
+     */
     public static function getTotalPitchers()
     {
         return static::sum('pitchers');
     }
 
+    /**
+     * Get total liters for all users.
+     */
     public static function getTotalLiter()
     {
         return static::sum('pitchers') * self::LITER_CONVERSION_FACTOR;
     }
 
+    /**
+     * Get total price for all pitchers.
+     */
     public static function getTotalPrice()
     {
         return static::sum('pitchers') * self::PRICE_PER_PITCHER;
+    }
+
+    /**
+     * Update the score for a user based on a session.
+     * 
+     * @param int $userId
+     * @param int $pitchers
+     */
+    public static function updateUserScore(int $userId, int $pitchers)
+    {
+        $score = static::firstOrCreate(['user_id' => $userId]);
+        $score->increment('pitchers', $pitchers);
+    }
+
+    /**
+     * Decrease the user's score (e.g., if a session is updated).
+     * 
+     * @param int $userId
+     * @param int $pitchers
+     */
+    public static function decreaseUserScore(int $userId, int $pitchers)
+    {
+        $score = static::where('user_id', $userId)->first();
+        if ($score) {
+            $score->decrement('pitchers', $pitchers);
+        }
     }
 }
