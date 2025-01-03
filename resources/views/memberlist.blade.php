@@ -9,13 +9,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Success and Error Messages -->
             @if (session('success'))
-                <div class="mb-4 p-4 bg-green-500 text-white font-bold rounded">
+                <div class="mb-4 p-4 bg-green-600 text-white font-bold rounded">
                     {{ session('success') }}
                 </div>
             @endif
 
             @if (session('error'))
-                <div class="mb-4 p-4 bg-red-500 text-white font-bold rounded">
+                <div class="mb-4 p-4 bg-red-600 text-white font-bold rounded">
                     {{ session('error') }}
                 </div>
             @endif
@@ -53,7 +53,7 @@
                                     <form action="{{ route('memberlist.destroy', $user->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                                        <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500">
                                             Delete
                                         </button>
                                     </form>
