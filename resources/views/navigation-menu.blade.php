@@ -186,6 +186,10 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
+            <x-responsive-nav-link href="{{ route('sessions') }}" :active="request()->routeIs('sessions')">
+                {{ __('Sessions') }}
+            </x-responsive-nav-link>
+
             <x-responsive-nav-link href="{{ route('leaderboard') }}" :active="request()->routeIs('leaderboard')">
                 {{ __('Leaderboard') }}
             </x-responsive-nav-link>
@@ -201,6 +205,12 @@
             @if (Auth::user()->administrator)
                 <x-responsive-nav-link href="{{ route('score-registration') }}" :active="request()->routeIs('score-registration')">
                     {{ __('Registration') }}
+                </x-responsive-nav-link>
+            @endif
+
+            @if (Auth::user()->administrator)
+                <x-responsive-nav-link href="{{ route('memberlist') }}" :active="request()->routeIs('memberlist')">
+                    {{ __('Memberlist') }}
                 </x-responsive-nav-link>
             @endif
         </div>
