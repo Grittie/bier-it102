@@ -41,14 +41,24 @@
                                 <td class="py-4 px-6 text-gray-700 border-b">{{ $user->card->rfid_tag ?? 'N/A' }}</td>
                                 <td class="py-4 px-6 text-gray-700 border-b">{{ $user->card->status ?? 'N/A' }}</td>
                                 <td class="py-4 px-6 text-gray-700 border-b">
-                                    <a href="{{ route('memberlist.update', $user->id) }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Edit</a>
-                                    <form action="{{ route('memberlist.destroy', $user->id) }}" method="POST" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-                                            Delete
-                                        </button>
-                                    </form>
+                                    <button 
+                                        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 edit-btn"
+                                        data-id="{{ $user->id }}"
+                                        data-name="{{ $user->name }}"
+                                        data-email="{{ $user->email }}"
+                                        data-card-rfid="{{ $user->card->rfid_tag ?? '' }}"
+                                        data-card-status="{{ $user->card->status ?? '' }}">
+                                        Edit
+                                    </button>
+                                    @if ($user->id !== auth()->id())
+                                        <form action="{{ route('memberlist.destroy', $user->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
