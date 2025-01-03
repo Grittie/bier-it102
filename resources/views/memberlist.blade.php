@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Success and Error Messages -->
             @if (session('success'))
-                <div class="mb-4 p-4 bg-green-600 text-white font-bold rounded">
+                <div class="mb-4 p-4 bg-lime-600 text-white font-bold rounded">
                     {{ session('success') }}
                 </div>
             @endif
