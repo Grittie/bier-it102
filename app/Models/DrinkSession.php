@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class DrinkSession extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'session_id'; // Specify the primary key
     protected $fillable = ['user_id', 'session_date', 'check_in_time', 'check_out_time', 'pitchers'];
-
+    protected $casts = [
+        'check_in_time' => 'string', // Laravel does not have a 'time' cast
+        'check_out_time' => 'string',
+        'session_date' => 'date',
+    ];
     protected static function boot()
     {
         parent::boot();
