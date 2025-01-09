@@ -16,7 +16,6 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('pitchers')->default(0);
             $table->integer('shame')->default(0);
-            $table->integer('score')->default(0); // Add this to track cumulative scores
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
