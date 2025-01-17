@@ -11,53 +11,51 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <!-- Navigation Links -->
+                                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('sessions') }}" :active="request()->routeIs('sessions')">
                         {{ __('Sessions') }}
                     </x-nav-link>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('leaderboard') }}" :active="request()->routeIs('leaderboard')">
                         {{ __('Leaderboard') }}
                     </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('hall-of-shame') }}" :active="request()->routeIs('hall-of-shame')">
-                        {{ __('Hall Of Shame') }}
+                        {{ __('Hall of Shame') }}
                     </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('to-do') }}" :active="request()->routeIs('to-do')">
-                        {{ __('To Do') }}
+                        {{ __('To-do') }}
                     </x-nav-link>
                 </div>
 
                 @if (Auth::user()->administrator)
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link href="{{ route('score-registration') }}" :active="request()->routeIs('score-registration')">
-                            {{ __('Registration') }}
-                        </x-nav-link>
-                    </div>
-                @endif
+                <!-- New Dropdown -->
+                <div class="hidden sm:flex sm:items-center sm:ml-10 relative">
+                    <x-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <button class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                <span>{{ __('Admin Options') }}</span>
+                                <svg class="ml-2 -mr-0.5 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </x-slot>
 
-                @if (Auth::user()->administrator)
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link href="{{ route('memberlist') }}" :active="request()->routeIs('memberlist')">
-                            {{ __('Memberlist') }}
-                        </x-nav-link>
-                    </div>
+                        <x-slot name="content">
+                            <x-dropdown-link :href="route('score-registration')">
+                                {{ __('Registration') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('memberlist')">
+                                {{ __('Member List') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('device-information')">
+                                {{ __('Device Information') }}
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
+                </div>
                 @endif
             </div>
 
@@ -166,6 +164,7 @@
                     </x-dropdown>
                 </div>
             </div>
+            
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
@@ -211,6 +210,12 @@
             @if (Auth::user()->administrator)
                 <x-responsive-nav-link href="{{ route('memberlist') }}" :active="request()->routeIs('memberlist')">
                     {{ __('Memberlist') }}
+                </x-responsive-nav-link>
+            @endif
+
+            @if (Auth::user()->administrator)
+                <x-responsive-nav-link href="{{ route('device-information') }}" :active="request()->routeIs('device-information')">
+                    {{ __('Device Information') }}
                 </x-responsive-nav-link>
             @endif
         </div>
