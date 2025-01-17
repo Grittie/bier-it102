@@ -24,7 +24,12 @@ class SessionController extends Controller
             ->orderBy('check_in_time')
             ->get();
 
-        return view('sessions', compact('sessionDates', 'sessionDetails', 'selectedDate'));
+        // Format session dates as an array for easy use in JavaScript
+        $highlightDates = $sessionDates->map(function ($date) {
+            return $date->format('Y-m-d');
+        });
+
+        return view('sessions', compact('highlightDates', 'sessionDetails', 'selectedDate'));
     }
 
     public function handleCard(Request $request)
