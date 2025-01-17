@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberListController;
+use App\Http\Controllers\DeviceInformationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,6 @@ Route::middleware('admin')->group(function () {
     Route::put('/memberlist/{id}', [MemberListController::class, 'update'])->name('memberlist.update');
     Route::delete('/memberlist/{user}', [MemberListController::class, 'destroy'])->name('memberlist.destroy');
     Route::post('store-score', [\App\Http\Controllers\ScoreController::class, 'store'])->name('score-store');
+    Route::get('/device-information', [\App\Http\Controllers\DeviceInformationController::class, 'index'])->name('device-information');
 });
 
