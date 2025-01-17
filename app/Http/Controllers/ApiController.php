@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TemperatureLog;
+use App\Models\InternalTemperature;
 use App\Models\ConnectionStatus;
 use App\Models\Heartbeat;
 use App\Models\DeviceInformation;
@@ -19,7 +19,7 @@ class ApiController extends Controller
             'humidity' => 'required|numeric',
         ]);
 
-        $entry = TemperatureLog::create([
+        $entry = InternalTemperature::create([
             'timestamp' => now(),
             'temperature' => $request->input('temperature'),
             'humidity' => $request->input('humidity'),
@@ -34,7 +34,7 @@ class ApiController extends Controller
     // Get the latest temperature and humidity entry
     public function getLatestTemperature()
     {
-        $entry = TemperatureLog::latest('timestamp')->first();
+        $entry = InternalTemperature::latest('timestamp')->first();
 
         if (!$entry) {
             return response()->json(['message' => 'No entries found.'], 404);
@@ -46,7 +46,7 @@ class ApiController extends Controller
     // Get the 60 most recent temperature and humidity entries
     public function getRecentTemperatures()
     {
-        $entries = TemperatureLog::orderBy('timestamp', 'asc')
+        $entries = InternalTemperature::orderBy('timestamp', 'asc')
             ->take(60)
             ->get();
 
