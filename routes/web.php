@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberListController;
 use App\Http\Controllers\DeviceInformationController;
-
+use App\Http\Controllers\LeaderboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +25,10 @@ Route::middleware([
 ])->group(function () {
     Route::get('/', function () { return view('dashboard'); })->name('dashboard');
     Route::get('/todo', function () { return view('to-do'); })->name('to-do');
-    Route::get('/leaderboard', [\App\Http\Controllers\LeaderboardController::class, 'index'])->name('leaderboard');
+    Route::get('/leaderboard', [LeaderboardController::class, 'index'])->name('leaderboard');
+    Route::get('/leaderboard/current', [LeaderboardController::class, 'showCurrent'])->name('leaderboard.current');
+    Route::get('/leaderboard/year1', [LeaderboardController::class, 'showYear1'])->name('leaderboard.year1');
+    Route::get('/leaderboard/year2', [LeaderboardController::class, 'showYear2'])->name('leaderboard.year2');
     Route::get('/sessions', [\App\Http\Controllers\SessionController::class, 'index'])->name('sessions');
     Route::get('/shame', function () { return view('hall-of-shame'); })->name('hall-of-shame');
 });

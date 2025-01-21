@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Score extends Model
 {
@@ -24,7 +25,10 @@ class Score extends Model
      */
     public static function getTotalPitchers()
     {
-        return static::sum('pitchers');
+        $totalPitchers = DB::table('scores')->sum('pitchers')
+            + DB::table('scoresy1')->sum('pitchers')
+            + DB::table('scoresy2')->sum('pitchers');
+        return $totalPitchers;
     }
 
     /**
@@ -32,7 +36,8 @@ class Score extends Model
      */
     public static function getTotalLiter()
     {
-        return static::sum('pitchers') * self::LITER_CONVERSION_FACTOR;
+        $totalPitchers = self::getTotalPitchers();
+        return $totalPitchers * self::LITER_CONVERSION_FACTOR;
     }
 
     /**
@@ -40,7 +45,8 @@ class Score extends Model
      */
     public static function getTotalPrice()
     {
-        return static::sum('pitchers') * self::PRICE_PER_PITCHER;
+        $totalPitchers = self::getTotalPitchers();
+        return $totalPitchers * self::PRICE_PER_PITCHER;
     }
 
     /**
