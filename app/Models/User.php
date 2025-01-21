@@ -42,6 +42,16 @@ class User extends Authenticatable
         return $this->hasOne(Score::class);
     }
 
+    public function scoresy1()
+    {
+        return $this->hasOne(ScoreY1::class, 'user_id');
+    }
+
+    public function scoresy2()
+    {
+        return $this->hasOne(ScoreY2::class, 'user_id');
+    }
+
     public function card()
     {
         return $this->hasOne(Card::class);

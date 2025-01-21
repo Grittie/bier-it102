@@ -7,38 +7,37 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-x-auto bg-white rounded-lg shadow">
-                <table class="table-auto w-full border-collapse bg-white">
-                    <thead>
-                        <tr class="bg-gray-200">
-                            <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-1/12">#</th>
-                            <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-3/12">Naam</th>
-                            <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-2/12">Pitchers</th>
-                            <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-2/12">Liter bier</th>
-                            <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-2/12">Prijskes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $key => $user)
-                            @if ($user->scores->pitchers >= 1)
-                                <tr class="hover:bg-gray-100">
-                                    <td class="py-4 px-6 text-gray-700 border-b text-left">
-                                        @if ($key == 0) 🥇
-                                        @elseif ($key == 1) 🥈
-                                        @elseif ($key == 2) 🥉
-                                        @else {{ $key + 1 }}
-                                        @endif
-                                    </td>
-                                    <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $user->name }}</td>
-                                    <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $user->scores->pitchers }}</td>
-                                    <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $user->scores->pitchers * 1.8 }} L</td>
-                                    <td class="py-4 px-6 text-gray-700 border-b text-left">€ {{ $user->scores->pitchers * 13 }}</td>
-                                </tr>
-                            @endif
-                        @endforeach
-                    </tbody>
-                </table>
+
+            <!-- Tab Selector -->
+            <div class="flex space-x-4 mb-4">
+                <a href="{{ route('leaderboard', ['tab' => 'current']) }}" 
+                   class="{{ $tab === 'current' ? 'font-bold text-blue-700 border-b-2 border-blue-500' : '' }} px-4 py-2 text-gray-700">
+                    Current
+                </a>
+                <a href="{{ route('leaderboard', ['tab' => 'year1']) }}" 
+                   class="{{ $tab === 'year1' ? 'font-bold text-blue-700 border-b-2 border-blue-500' : '' }} px-4 py-2 text-gray-700">
+                    Year 1
+                </a>
+                <a href="{{ route('leaderboard', ['tab' => 'year2']) }}" 
+                   class="{{ $tab === 'year2' ? 'font-bold text-blue-700 border-b-2 border-blue-500' : '' }} px-4 py-2 text-gray-700">
+                    Year 2
+                </a>
             </div>
+
+            <!-- Leaderboard Table -->
+            <div>
+
+                <div>
+                    @if ($tab === 'current')
+                        @include('leaderboard.current')
+                    @elseif ($tab === 'year1')
+                        @include('leaderboard.year1')
+                    @elseif ($tab === 'year2')
+                        @include('leaderboard.year2')
+                    @endif
+                </div>
+            </div>
+
         </div>
     </div>
 </x-app-layout>
