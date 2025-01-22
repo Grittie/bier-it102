@@ -22,6 +22,8 @@
                 </div>
             </div>
 
+            <br>
+
             <!-- Current Environment -->
             <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h3 class="text-lg leading-6 font-medium text-gray-900">Current Environment</h3>
@@ -36,6 +38,8 @@
                     </div>
                 </div>
             </div>
+            
+            <br>
 
             <!-- Connection Status -->
             <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
@@ -52,6 +56,8 @@
                     @endif
                 </div>
             </div>
+
+            <br>
 
             <!-- Graph for Internal Temperature -->
             <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
