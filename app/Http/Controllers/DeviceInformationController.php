@@ -19,8 +19,9 @@ class DeviceInformationController extends Controller
         $latestTemperature = InternalTemperature::latest()->first();
 
         // Check the connection status
-        $latestConnection = ConnectionStatus::latest()->first();
+        $latestConnection = ConnectionStatus::orderBy('timestamp', 'desc')->first();
         $connectionStatus = false;
+
         if ($latestConnection) {
             $connectionTimestamp = Carbon::parse($latestConnection->timestamp);
             $connectionStatus = $connectionTimestamp->diffInSeconds(now()) <= 40;
