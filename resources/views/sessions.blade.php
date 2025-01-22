@@ -43,6 +43,18 @@
                 });
             </script>
 
+            @forelse ($sessionDetails as $key => $detail)
+                @if ($key === 0)
+                    <div class="mt-4 text-sm text-gray-500">
+                        Session started: {{ $detail->check_in_time }}
+                    </div>
+                    @break
+                @endif
+            @empty
+                <div class="mt-4 text-sm text-gray-500">
+                </div>
+            @endforelse
+
             <!-- Table for Session Details -->
             <div class="overflow-x-auto bg-white rounded-lg shadow">
                 <table class="table-auto w-full border-collapse bg-white">
@@ -50,10 +62,9 @@
                         <tr class="bg-gray-200">
                             <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-1/12">#</th>
                             <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-3/12">Name</th>
-                            <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-2/12">Clocked In</th>
-                            <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-2/12">Clocked Out</th>
-                            <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-2/12">Total Hours</th>
+                            <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-2/12">Arrival</th>
                             <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-2/12">Pitchers</th>
+                            <th class="py-4 px-6 font-semibold text-gray-700 border-b text-left w-2/12">€ Spent</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,9 +73,8 @@
                                 <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $key + 1 }}</td>
                                 <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $detail->user->name }}</td>
                                 <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $detail->check_in_time }}</td>
-                                <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $detail->check_out_time ?? '-' }}</td>
-                                <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $detail->total_hours ?? '0' }} hrs</td>
                                 <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $detail->pitchers }}</td>
+                                <td class="py-4 px-6 text-gray-700 border-b text-left">€ {{ $detail->pitchers * 14 }}</td>
                             </tr>
                         @empty
                             <tr>
@@ -74,6 +84,7 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 </x-app-layout>
