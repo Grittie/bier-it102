@@ -9,26 +9,17 @@ use App\Models\User;
 
 class SessionController extends Controller
 {
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         // Fetch all unique session dates
         $sessionDates = DrinkSession::select('session_date')
             ->distinct()
             ->orderByDesc('session_date')
             ->pluck('session_date');
 
-        // Check if there's session data for today
-        $today = now()->toDateString();
-        $hasTodaySessions = DrinkSession::where('session_date', $today)->exists();
-
-        return view('sessions', [
-            'sessionDates' => $sessionDates,
-            'defaultDate' => $hasTodaySessions ? $today : null,
-        ]);
-    
+        // Use today's date if no session_date is provided
+        $selectedDate = $request->get('session_date') ?? now()->toDateString();
 
         // Fetch session details for the selected date
-        $selectedDate = $request->get('session_date');
         $sessionDetails = DrinkSession::with('user') // Load related user data
             ->where('session_date', $selectedDate)
             ->orderBy('check_in_time')
@@ -41,6 +32,7 @@ class SessionController extends Controller
 
         return view('sessions', compact('highlightDates', 'sessionDetails', 'selectedDate'));
     }
+
 
     public function handleCard(Request $request)
     {
