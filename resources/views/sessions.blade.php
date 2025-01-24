@@ -33,7 +33,7 @@
                     // Initialize Flatpickr
                     flatpickr("#session-date", {
                         dateFormat: "Y-m-d",
-                        defaultDate: "{{ request('session_date') }}",
+                        defaultDate: "{{ request('session_date') ?? now()->toDateString() }}", // Default to today's date if no session_date is selected
                         enable: highlightDates, // Enable only the highlighted dates
                         onChange: function(selectedDates, dateStr) {
                             // Redirect when a date is selected
@@ -42,6 +42,7 @@
                     });
                 });
             </script>
+
 
             @forelse ($sessionDetails as $key => $detail)
                 @if ($key === 0)

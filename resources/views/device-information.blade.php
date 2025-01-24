@@ -36,12 +36,23 @@
                     </div>
                 </div>
             </div>
-
+            
             <!-- Connection Status -->
             <div class="bg-white shadow overflow-hidden sm:rounded-lg p-6">
                 <h3 class="text-lg leading-6 font-medium text-gray-900">ESP32 Connection Status</h3>
                 <div class="mt-4">
-                    @if ($connectionStatus)
+                    @php
+                        // Get the latest heartbeat entry
+                        $latestHeartbeat = \App\Models\Heartbeat::latest('timestamp')->first();
+                        $isConnected = false;
+
+                        if ($latestHeartbeat) {
+                            $heartbeatTime = \Carbon\Carbon::parse($latestHeartbeat->timestamp);
+                            $isConnected = $heartbeatTime->diffInSeconds(\Carbon\Carbon::now()) <= 40;
+                        }
+                    @endphp
+
+                    @if ($isConnected)
                         <span class="px-3 py-1 inline-flex text-sm leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                             Connected
                         </span>
