@@ -17,6 +17,16 @@ class SessionController extends Controller
             ->orderByDesc('session_date')
             ->pluck('session_date');
 
+        // Check if there's session data for today
+        $today = now()->toDateString();
+        $hasTodaySessions = DrinkSession::where('session_date', $today)->exists();
+
+        return view('sessions', [
+            'sessionDates' => $sessionDates,
+            'defaultDate' => $hasTodaySessions ? $today : null,
+        ]);
+    
+
         // Fetch session details for the selected date
         $selectedDate = $request->get('session_date');
         $sessionDetails = DrinkSession::with('user') // Load related user data
