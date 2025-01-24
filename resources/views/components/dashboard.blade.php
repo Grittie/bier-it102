@@ -42,7 +42,7 @@
     <p class="mt-4 text-gray-500 text-sm leading-relaxed">
         Year 1: {{ DB::table('scoresy1')->sum('pitchers') }} pitchers, 
         {{ DB::table('scoresy1')->sum('pitchers') * 1.8 }} liters, 
-        €{{ DB::table('scoresy1')->sum('pitchers') * 14 }},- <br>
+        €{{ DB::table('scoresy1')->sum('pitchers') * 13 }},- <br>
 
         Year 2: {{ DB::table('scoresy2')->sum('pitchers') }} pitchers, 
         {{ DB::table('scoresy2')->sum('pitchers') * 1.8 }} liters, 

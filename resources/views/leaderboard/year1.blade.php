@@ -32,7 +32,7 @@
                             <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $user->name }}</td>
                             <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $user->scoresy1->pitchers ?? 0 }}</td>
                             <td class="py-4 px-6 text-gray-700 border-b text-left">{{ ($user->scoresy1->pitchers ?? 0) * 1.8 }} L</td>
-                            <td class="py-4 px-6 text-gray-700 border-b text-left">€ {{ ($user->scoresy1->pitchers ?? 0) * 14 }}</td>
+                            <td class="py-4 px-6 text-gray-700 border-b text-left">€ {{ ($user->scoresy1->pitchers ?? 0) * 13 }}</td>
                         </tr>
                     @endforeach
                 </tbody>
