@@ -21,6 +21,14 @@
                 <x-section-border />
             @endif
 
+
+            {{-- Add Edit Card UID Section --}}
+            <div class="mt-10 sm:mt-0">
+                    @livewire('edit-card-uid', ['userId' => Auth::user()->id])
+            </div>
+
+            <x-section-border />
+
             <div class="mt-10 sm:mt-0">
                 @livewire('profile.logout-other-browser-sessions-form')
             </div>
