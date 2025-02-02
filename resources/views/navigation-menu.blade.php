@@ -26,7 +26,7 @@
                         {{ __('Hall of Shame') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('to-do') }}" :active="request()->routeIs('to-do')">
-                        {{ __('To-do') }}
+                        {{ __('About us') }}
                     </x-nav-link>
                 </div>
 
@@ -198,7 +198,7 @@
             </x-responsive-nav-link>
 
             <x-responsive-nav-link href="{{ route('to-do') }}" :active="request()->routeIs('to-do')">
-                {{ __('To-Do') }}
+                {{ __('About us') }}
             </x-responsive-nav-link>
 
             @if (Auth::user()->administrator)
