@@ -20,20 +20,24 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php $rank = 0; @endphp
                     @foreach ($users as $key => $user)
-                        <tr class="hover:bg-gray-100">
-                            <td class="py-4 px-6 text-gray-700 border-b text-left">
-                                @if ($key == 0) 🥇
-                                @elseif ($key == 1) 🥈
-                                @elseif ($key == 2) 🥉
-                                @else {{ $key + 1 }}
-                                @endif
-                            </td>
-                            <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $user->name }}</td>
-                            <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $user->scoresy2->pitchers ?? 0 }}</td>
-                            <td class="py-4 px-6 text-gray-700 border-b text-left">{{ ($user->scoresy2->pitchers ?? 0) * 1.8 }} L</td>
-                            <td class="py-4 px-6 text-gray-700 border-b text-left">€ {{ ($user->scoresy2->pitchers ?? 0) * 14 }}</td>
-                        </tr>
+                        @if (($user->scoresy2->pitchers ?? 0) > 0)
+                            @php $rank++; @endphp
+                            <tr class="hover:bg-gray-100">
+                                <td class="py-4 px-6 text-gray-700 border-b text-left">
+                                    @if ($rank == 1) 🥇
+                                    @elseif ($rank == 2) 🥈
+                                    @elseif ($rank == 3) 🥉
+                                    @else {{ $rank }}
+                                    @endif
+                                </td>
+                                <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $user->name }}</td>
+                                <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $user->scoresy2->pitchers }}</td>
+                                <td class="py-4 px-6 text-gray-700 border-b text-left">{{ $user->scoresy2->pitchers * 1.8 }} L</td>
+                                <td class="py-4 px-6 text-gray-700 border-b text-left">€ {{ $user->scoresy2->pitchers * 14 }}</td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
