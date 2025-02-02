@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\SessionController;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +15,35 @@ use App\Http\Controllers\SessionController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::get('/pitchers-over-time', function () {
+    $data = DB::table('drink_sessions')
+        ->select(DB::raw('DATE(session_date) as date'), DB::raw('SUM(pitchers) as total_pitchers'))
+        ->groupBy('date')
+        ->orderBy('date', 'asc')
+        ->get();
+
+    return response()->json([
+        'dates' => $data->pluck('date'),
+        'values' => $data->pluck('total_pitchers'),
+    ]);
+});
+
+Route::get('/top-drinkers', function () {
+    $topDrinkers = DB::table('drink_sessions')
+        ->join('users', 'drink_sessions.user_id', '=', 'users.id')
+        ->select('users.name', DB::raw('SUM(drink_sessions.Pitchers) as total_pitchers'))
+        ->groupBy('users.id', 'users.name')
+        ->orderByDesc('total_pitchers')
+        ->limit(5)
+        ->get();
+
+    return response()->json([
+        'names' => $topDrinkers->pluck('name'),
+        'values' => $topDrinkers->pluck('total_pitchers'),
+    ]);
+});
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

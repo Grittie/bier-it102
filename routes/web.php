@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemberListController;
 use App\Http\Controllers\DeviceInformationController;
 use App\Http\Controllers\LeaderboardController;
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +16,34 @@ use App\Http\Controllers\LeaderboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/api/getTopDrinkers', function () {
+    $topDrinkers = DB::table('scores')
+        ->join('users', 'scores.user_id', '=', 'users.id')
+        ->select('users.name', DB::raw('SUM(scores.pitchers) as total_pitchers'))
+        ->groupBy('users.id', 'users.name')
+        ->orderByDesc('total_pitchers')
+        ->limit(5)
+        ->get();
+
+    return response()->json([
+        'labels' => $topDrinkers->pluck('name'),
+        'values' => $topDrinkers->pluck('total_pitchers'),
+    ]);
+});
+
+Route::get('/api/getPitchersOverTime', function () {
+    $pitchersOverTime = DB::table('drink_sessions')
+        ->select(DB::raw("DATE(SessionDate) as date"), DB::raw("SUM(Pitchers) as total_pitchers"))
+        ->groupBy('date')
+        ->orderBy('date')
+        ->get();
+
+    return response()->json([
+        'labels' => $pitchersOverTime->pluck('date'),
+        'values' => $pitchersOverTime->pluck('total_pitchers'),
+    ]);
+});
+
 
 Route::get('/guest_dashboard', function () { return view('guest-dashboard'); })->name('guest-dashboard');
 Route::get('/guest_leaderboard', [\App\Http\Controllers\LeaderboardController::class, 'index'])->name('guest-leaderboard');
